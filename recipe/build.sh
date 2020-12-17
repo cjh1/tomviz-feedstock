@@ -11,6 +11,8 @@ then
   done
 fi
 
+set %CONDA_BLD_PATH%
+
 # First build ParaView
 mkdir -p paraview-build && cd paraview-build
 cmake -G"Ninja" -DCMAKE_BUILD_TYPE:STRING=Release \
@@ -41,7 +43,7 @@ cmake -G"Ninja" -DCMAKE_BUILD_TYPE:STRING=Release \
   -DCMAKE_INSTALL_PREFIX=${PREFIX} \
   -DCMAKE_PREFIX_PATH=${PREFIX} \
   -DCMAKE_INSTALL_RPATH:STRING=${PREFIX}/lib \
-  -DParaView_DIR:PATH=${PREFIX} \
+  -DParaView_DIR:PATH=${SRC_DIR}/paraview-build \
   -DBUILD_TESTING:BOOL=OFF \
   -DPython3_FIND_STRATEGY=LOCATION \
   -DPython3_ROOT_DIR=${PREFIX} \

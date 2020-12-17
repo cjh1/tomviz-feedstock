@@ -1,14 +1,16 @@
 {% set name = "tomviz" %}
 {% set version = "1.9.0" %}
 {% set sha256 = "cdb3860d1fbc5a5d628f985158da75fa82e17ceb24c2f0cd8cf5bc772c7e2e34" %}
-{% set paraview_sha = "98a2eea1af02a45fa6d9b72b97b67f991bcb1f0e" %}
+{% set paraview_sha = "10938cd09bfd2fae80955c4886a4e1cdac782b50" %}
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  - url: https://github.com/OpenChemistry/{{ name }}/releases/download/{{ version  }}/{{ name }}-{{ version }}.tar.gz
-    sha256: {{ sha256 }}
+  #- url: https://github.com/OpenChemistry/{{ name }}/releases/download/{{ version  }}/{{ name }}-{{ version }}.tar.gz
+  #  sha256: {{ sha256 }}
+  - git_url: https://github.com/cjh1/tomviz.git
+    git_rev: a5886325b1f5e84417cd03f5882c5b7d589bb54a
     folder: tomviz
   - git_url: https://github.com/OpenChemistry/ParaView.git
     git_rev: {{ paraview_sha }}
@@ -59,7 +61,6 @@ requirements:
     - {{ cdt('libuuid-devel') }}         # [linux]
   host:
     - python=3.7
-    - hdf5
     - libpng
     - jpeg
     - libtiff
